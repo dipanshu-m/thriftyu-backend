@@ -1,20 +1,20 @@
-import { log } from 'console';
-import express from 'express';
-import mongoose from 'mongoose';
-import { config } from 'dotenv';
+const { log } = require('console');
+const express = require('express');
+const mongoose = require('mongoose');
+const { config } = require('dotenv');
 config();
 
-import authRouter from './routes/AuthRoutes';
+const authRouter = require('./routes/AuthRoutes');
 
-const app: express.Application = express();
+const app = express();
 
 // middlewares
-app.use('/auth', authRouter);
+app.use('/auth/', authRouter);
 
 // routes
 app.get(
   '/',
-  (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  (req, res, next) => {
     res.send('server working');
   }
 );
@@ -32,6 +32,6 @@ mongoose
       log('server connected to port', PORT);
     });
   })
-  .catch((err: mongoose.Error) => {
+  .catch((err) => {
     log(err);
   });
