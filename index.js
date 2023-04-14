@@ -5,11 +5,15 @@ const { config } = require('dotenv');
 config();
 
 const authRouter = require('./routes/AuthRoutes');
+const transactionRouter = require('./routes/TransactionRoutes');
 
 const app = express();
 
+
 // middlewares
+app.use(express.json());
 app.use('/auth/', authRouter);
+app.use('/transaction/', transactionRouter);
 
 // routes
 app.get(
