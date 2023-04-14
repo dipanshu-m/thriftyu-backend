@@ -51,8 +51,8 @@
   },
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "start": "node build/index.js",
-    "build":"npx tsc",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -65,5 +65,8 @@
   "bugs": {
     "url": "https://github.com/dipanshu-m/thriftyu-backend/issues"
   },
-  "homepage": "https://github.com/dipanshu-m/thriftyu-backend#readme"
+  "homepage": "https://github.com/dipanshu-m/thriftyu-backend#readme",
+  "devDependencies": {
+    "rimraf": "^5.0.0"
+  }
 }
